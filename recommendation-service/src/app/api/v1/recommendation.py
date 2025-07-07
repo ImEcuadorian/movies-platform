@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from src.app.db.seesion import SessionLocal
+from src.app.db.session import SessionLocal
 from src.app.schemas.recommendation import RecommendationRead, RecommendationCreate
 from src.app.services.recommendation_service import RecommendationService
 
