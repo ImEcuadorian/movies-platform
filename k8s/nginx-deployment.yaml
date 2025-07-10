@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: movies-platform
+spec:
+  replicas: 10
+  selector:
+    matchLabels: { app: nginx }
+  template:
+    metadata:
+      labels: { app: nginx }
+    spec:
+      containers:
+        - name: nginx
+          image: nginx-custom:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: config
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+      volumes:
+        - name: config
+          configMap:
+            name: nginx-config

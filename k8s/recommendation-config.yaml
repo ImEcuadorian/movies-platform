@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: recommendation-config
+  namespace: movies-platform
+data:
+  SQLALCHEMY_DATABASE_URL: "postgresql+psycopg2://postgres:root@pg-ha-postgresql-ha-pgpool:5432/recommendations_db"
